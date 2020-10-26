@@ -13,13 +13,13 @@ URL_REGEX = r"(?:(?:https?|ftp):\/\/)?[\w/\-?=%.]+\.[\w/\-?=%.]+"
 
 
 class MirrorStatus:
-    STATUS_UPLOADING = "Uploading...📤"
-    STATUS_DOWNLOADING = "Downloading...📥"
-    STATUS_WAITING = "Queued...📝"
-    STATUS_FAILED = "Failed 🚫. Cleaning download"
-    STATUS_CANCELLED = "Cancelled ❎"
-    STATUS_ARCHIVING = "Archiving...🔐"
-    STATUS_EXTRACTING = "Extracting...📂"
+    STATUS_UPLOADING = "Đang tải lên...📤"
+    STATUS_DOWNLOADING = "Đang tải xuống...📥"
+    STATUS_WAITING = "Hàng chờ...📝"
+    STATUS_FAILED = "Tải xuống thất bại 🚫. Đang dọn dẹp dữ liệu"
+    STATUS_CANCELLED = "Đã hủy ❎"
+    STATUS_ARCHIVING = "Lưu trữ...🔐"
+    STATUS_EXTRACTING = "Giải nén...📂"
 
 
 PROGRESS_MAX_SIZE = 100 // 8
