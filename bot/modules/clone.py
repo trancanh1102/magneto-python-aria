@@ -21,7 +21,7 @@ def cloneNode(update,context):
         else:
             sendMarkup(result,context.bot,update,button)
     else:
-        sendMessage("Provide G-Drive Shareable Link to Clone.",context.bot,update)
+        sendMessage("Cung cấp liên kết có thể chia sẻ trên G-Drive để sao chép.",context.bot,update)
 
 clone_handler = CommandHandler(BotCommands.CloneCommand,cloneNode,filters=CustomFilters.authorized_chat | CustomFilters.authorized_user)
 dispatcher.add_handler(clone_handler)
