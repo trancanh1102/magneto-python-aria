@@ -18,7 +18,7 @@ def cancel_mirror(update, context):
         gid = args[1]
         dl = getDownloadByGid(gid)
         if not dl:
-            sendMessage(f"GID: <code>{gid}</code> not found.", context.bot, update)
+            sendMessage(f"GID: <code>{gid}</code> không tìm thấy.", context.bot, update)
             return
         with download_dict_lock:
             keys = list(download_dict.keys())
@@ -36,14 +36,14 @@ def cancel_mirror(update, context):
                 sendMessage(msg, context.bot, update)
                 return
             else:
-                msg = "Please reply to the /mirror message which was used to start the download or /cancel gid to cancel it!"
+                msg = "Vui lòng trả lời tin nhắn /mirror được sử dụng để bắt đầu tải xuống hoặc /cancel gid để hủy nó!"
                 sendMessage(msg, context.bot, update)
                 return
     if dl.status() == "Uploading":
-        sendMessage("Upload in Progress, Don't Cancel it.", context.bot, update)
+        sendMessage("Đang tải lên, vui lòng không hủy.", context.bot, update)
         return
     elif dl.status() == "Archiving":
-        sendMessage("Archival in Progress, Don't Cancel it.", context.bot, update)
+        sendMessage("Đang tiến hành lưu trữ, vui lòng không hủy bỏ.", context.bot, update)
         return
     else:
         dl.download().cancel_download()
