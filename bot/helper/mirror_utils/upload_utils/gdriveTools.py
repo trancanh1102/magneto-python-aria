@@ -39,7 +39,7 @@ class GoogleDriveHelper:
         # Redirect URI for installed apps, can be left as is
         self.__REDIRECT_URI = "urn:ietf:wg:oauth:2.0:oob"
         self.__G_DRIVE_DIR_MIME_TYPE = "application/vnd.google-apps.folder"
-        self.__G_DRIVE_BASE_DOWNLOAD_URL = "https://drive.google.com/uc?id={}&export=download"
+        self.__G_DRIVE_BASE_DOWNLOAD_URL = "https://drive.google.com/file/d/{}"
         self.__G_DRIVE_DIR_BASE_DOWNLOAD_URL = "https://drive.google.com/drive/folders/{}"
         self.__listener = listener
         self.__service = self.authorize()
@@ -527,7 +527,7 @@ class GoogleDriveHelper:
                         else:
                             msg += f' <b>| <a href="{url}">Index Link</a></b>'
                 else:
-                    furl = f"https://drive.google.com/uc?id={file.get('id')}&export=download"
+                    furl = f"https://drive.google.com/file/d/{file.get('id')}"
                     msg += f"⁍<code>{file.get('name')}<br>({get_readable_file_size(int(file.get('size')))})📄</code><br>"
                     if SHORTENER is not None and SHORTENER_API is not None:
                         sfurl = requests.get('https://{}/api?api={}&url={}&format=text'.format(SHORTENER, SHORTENER_API, furl)).text
