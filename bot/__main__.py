@@ -43,15 +43,15 @@ def stats(update, context):
 @run_async
 def start(update, context):
     start_string = f'''
-This is a bot which can mirror all your links to Google drive!
-Type /{BotCommands.HelpCommand} to get a list of available commands
+Đây là một máy chủ có thể tải tất cả các liên kết của bạn với Google drive!
+Gõ /{BotCommands.HelpCommand} để có được danh sách các lệnh có sẵn
 '''
     sendMessage(start_string, context.bot, update)
 
 
 @run_async
 def restart(update, context):
-    restart_message = sendMessage("Restarting, Please wait!", context.bot, update)
+    restart_message = sendMessage("Đang khởi động lại, vui lòng chờ một chút", context.bot, update)
     # Save restart message object in order to reply to it after restarting
     fs_utils.clean_all()
     with open('restart.pickle', 'wb') as status:
@@ -75,29 +75,29 @@ def log(update, context):
 @run_async
 def bot_help(update, context):
     help_string = f'''
-/{BotCommands.HelpCommand}: To get this message
+/{BotCommands.HelpCommand}: Để nhận được tin nhắn này
 
-/{BotCommands.MirrorCommand} [download_url][magnet_link]: Start mirroring the link to google drive
+/{BotCommands.MirrorCommand} [download_url][magnet_link]: Bắt đầu tải một link nhanh và tải lên google drive
 
-/{BotCommands.UnzipMirrorCommand} [download_url][magnet_link] : starts mirroring and if downloaded file is any archive , extracts it to google drive
+/{BotCommands.UnzipMirrorCommand} [download_url][magnet_link] : Bắt đầu tải một link nhanh, giải nén và tải lên google drive
 
-/{BotCommands.TarMirrorCommand} [download_url][magnet_link]: start mirroring and upload the archived (.tar) version of the download
+/{BotCommands.TarMirrorCommand} [download_url][magnet_link]: Bắt đầu tải một link nhanh và tải lên phiên bản tải xuống đã lưu trữ (.tar)
 
-/{BotCommands.WatchCommand} [youtube-dl supported link]: Mirror through youtube-dl. Click /{BotCommands.WatchCommand} for more help.
+/{BotCommands.WatchCommand} [youtube-dl supported link]: Tải nhanh thông qua youtube-dl. Click /{BotCommands.WatchCommand} để được biết thêm.
 
-/{BotCommands.TarWatchCommand} [youtube-dl supported link]: Mirror through youtube-dl and tar before uploading
+/{BotCommands.TarWatchCommand} [youtube-dl supported link]: Tải nhanh thông qua youtube-dl và nén bằng đuôi .tar sau đó file sẽ được tải lên
 
-/{BotCommands.CancelMirror} : Reply to the message by which the download was initiated and that download will be cancelled
+/{BotCommands.CancelMirror} : Lệnh này sử dụng kèm theo ID của phiên tải xuống và quá trình tải xuống đó sẽ bị hủy
 
-/{BotCommands.StatusCommand}: Shows a status of all the downloads
+/{BotCommands.StatusCommand}: Hiển thị trạng thái của tất cả các bản tải xuống
 
-/{BotCommands.ListCommand} [search term]: Searches the search term in the Google drive, if found replies with the link
+/{BotCommands.ListCommand} [search term]: Tìm kiếm cụm từ tìm kiếm trong google drive, nếu tìm thấy kết quả sẽ được trả về kèm theo liên kết
 
-/{BotCommands.StatsCommand}: Show Stats of the machine the bot is hosted on
+/{BotCommands.StatsCommand}: Hiển thị thống kê của máy chủ
 
-/{BotCommands.AuthorizeCommand}: Authorize a chat or a user to use the bot (Can only be invoked by owner of the bot)
+/{BotCommands.AuthorizeCommand}: Cho phép mở quyền hoặc đóng quyền sử dụng máy chủ ngoài người sở hữu (Chỉ có Admin mới sử dụng được)
 
-/{BotCommands.LogCommand}: Get a log file of the bot. Handy for getting crash reports
+/{BotCommands.LogCommand}: Lấy logs của máy chủ
 
 '''
     sendMessage(help_string, context.bot, update)
@@ -109,7 +109,7 @@ def main():
     if path.exists('restart.pickle'):
         with open('restart.pickle', 'rb') as status:
             restart_message = pickle.load(status)
-        restart_message.edit_text("Restarted Successfully!")
+        restart_message.edit_text("Khởi động lại máy chủ thành công!")
         remove('restart.pickle')
 
     start_handler = CommandHandler(BotCommands.StartCommand, start,
