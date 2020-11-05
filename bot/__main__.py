@@ -28,15 +28,15 @@ def stats(update, context):
     cpuUsage = psutil.cpu_percent(interval=0.5)
     memory = psutil.virtual_memory().percent
     disk = psutil.disk_usage('/').percent
-    stats = f'<b>Bot Uptime:</b> {currentTime}\n' \
-            f'<b>Total disk space:</b> {total}\n' \
-            f'<b>Used:</b> {used}  ' \
-            f'<b>Free:</b> {free}\n\n' \
-            f'📊Data Usage📊\n<b>Upload:</b> {sent}\n' \
-            f'<b>Down:</b> {recv}\n\n' \
+    stats = f'<b>Thời gian bot chạy:</b> {currentTime}\n' \
+            f'<b>Tổng dung lượng ổ đĩa:</b> {total}\n' \
+            f'<b>Đã dùng:</b> {used}  ' \
+            f'<b>Còn lại:</b> {free}\n\n' \
+            f'📊Dữ liệu đã sử dụng📊\n<b>Tải lên:</b> {sent}\n' \
+            f'<b>Tải xuống:</b> {recv}\n\n' \
             f'<b>CPU:</b> {cpuUsage}% ' \
             f'<b>RAM:</b> {memory}% ' \
-            f'<b>Disk:</b> {disk}%'
+            f'<b>Ổ đĩa:</b> {disk}%'
     sendMessage(stats, context.bot, update)
 
 
@@ -83,7 +83,7 @@ def bot_help(update, context):
 
 /{BotCommands.TarMirrorCommand} [download_url][magnet_link]: start mirroring and upload the archived (.tar) version of the download
 
-/{BotCommands.WatchCommand} [youtube-dl supported link]: Mirror through youtube-dl 
+/{BotCommands.WatchCommand} [youtube-dl supported link]: Mirror through youtube-dl. Click /{BotCommands.WatchCommand} for more help.
 
 /{BotCommands.TarWatchCommand} [youtube-dl supported link]: Mirror through youtube-dl and tar before uploading
 
