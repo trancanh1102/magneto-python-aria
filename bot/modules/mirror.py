@@ -138,7 +138,7 @@ class MirrorListener(listeners.MirrorListeners):
 
     def onUploadComplete(self, link: str):
         with download_dict_lock:
-            msg = f'<b>Filename : </b><code>{download_dict[self.uid].name()}</code>\n<b>Size : </b><code>{download_dict[self.uid].size()}</code>'
+            msg = f'<b>Tên file : </b><code>{download_dict[self.uid].name()}</code>\n<b>Size : </b><code>{download_dict[self.uid].size()}</code>'
             buttons = button_build.ButtonMaker()
             if SHORTENER is not None and SHORTENER_API is not None:
                 surl = requests.get('https://{}/api?api={}&url={}&format=text'.format(SHORTENER, SHORTENER_API, link)).text
@@ -228,7 +228,7 @@ def _mirror(bot, update, isTar=False, extract=False):
     else:
         tag = None
     if not bot_utils.is_url(link) and not bot_utils.is_magnet(link):
-        sendMessage('No download source provided', bot, update)
+        sendMessage('Không có nguồn tải xuống được cung cấp', bot, update)
         return
 
     try:
