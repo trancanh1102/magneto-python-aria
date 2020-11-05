@@ -10,7 +10,7 @@ def list_drive(update,context):
     try:
         search = update.message.text.split(' ',maxsplit=1)[1]
         LOGGER.info(f"Searching: {search}")
-        reply = sendMessage('Searching..... Please wait!', context.bot, update)
+        reply = sendMessage('Đang tìm kiếm ..... Vui lòng đợi!', context.bot, update)
         gdrive = GoogleDriveHelper(None)
         msg, button = gdrive.drive_list(search)
 
@@ -20,7 +20,7 @@ def list_drive(update,context):
             editMessage('Không có kết quả nào', reply, button)
 
     except IndexError:
-        sendMessage('send a search key along with command', context.bot, update)
+        sendMessage('gửi một từ khoá và tìm kiếm cùng với lệnh', context.bot, update)
 
 
 list_handler = CommandHandler(BotCommands.ListCommand, list_drive,filters=CustomFilters.authorized_chat | CustomFilters.authorized_user)
