@@ -28,9 +28,9 @@ def authorize(update,context):
             if user_id not in AUTHORIZED_CHATS:
                 file.write(f'{user_id}\n')
                 AUTHORIZED_CHATS.add(user_id)
-                msg = 'Person Authorized to use the bot!'
+                msg = 'Quyền sử dụng bot đã được mở!'
             else:
-                msg = 'Person already authorized'
+                msg = 'Quyền sử dụng bot đã bị khoá!'
         sendMessage(msg, context.bot, update)
 
 
