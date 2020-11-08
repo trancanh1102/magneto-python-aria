@@ -61,7 +61,7 @@ def cancel_all(update, context):
                 dlDetails.download().cancel_download()
                 count += 1
     delete_all_messages()
-    sendMessage(f'Cancelled {count} downloads!', context.bot, update)
+    sendMessage(f'Đã hủy {count} quá trình tải xuống!', context.bot, update)
 
 
 cancel_mirror_handler = CommandHandler(BotCommands.CancelMirror, cancel_mirror,
