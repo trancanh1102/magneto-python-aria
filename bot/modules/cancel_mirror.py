@@ -18,7 +18,7 @@ def cancel_mirror(update, context):
         gid = args[1]
         dl = getDownloadByGid(gid)
         if not dl:
-            sendMessage(f"GID: <code>{gid}</code> không tìm thấy.", context.bot, update)
+            sendMessage(f"ID tải xuống: <code>{gid}</code> không tìm thấy.", context.bot, update)
             return
         with download_dict_lock:
             keys = list(download_dict.keys())
@@ -36,7 +36,7 @@ def cancel_mirror(update, context):
                 sendMessage(msg, context.bot, update)
                 return
             else:
-                msg = "Vui lòng trả lời tin nhắn /mirror được sử dụng để bắt đầu tải xuống hoặc /cancel gid để hủy nó!"
+                msg = "Vui lòng trả lời tin nhắn /mirror được sử dụng để bắt đầu tải xuống hoặc /cancel ID để hủy nó!"
                 sendMessage(msg, context.bot, update)
                 return
     if dl.status() == "Uploading":
