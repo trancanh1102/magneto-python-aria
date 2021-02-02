@@ -17,11 +17,11 @@ def _watch(bot: Bot, update, isTar=False):
     try:
         link = message_args[1]
     except IndexError:
-        msg = f"/{BotCommands.WatchCommand} [yt_dl các link hỗ trợ] [chất lượng] |[Tên tùy chọn] để tải nhanh với youtube-dl.\n\n"
-        msg += "<b>Lưu ý: - Chất lượng và tên tùy chỉnh là tùy chọn</b>\n\nVí dụ về chất lượng :- audio, 144, 240, 360, 480, 720, 1080, 2160."
+        msg = f"/{BotCommands.WatchCommand} [yt_dl supported link] [quality] |[CustomName] tải nhanh với youtube_dl.\n\n"
+        msg += "<b>Note :- Chất lượng và tên tùy chỉnh là tùy chọn</b>\n\nVí dụ về chất lượng :- audio, 144, 240, 360, 480, 720, 1080, 2160."
         msg += "\n\nNếu bạn muốn sử dụng tên tệp tùy chỉnh, vui lòng nhập nó sau |"
-        msg += f"\n\nExample :-\n<code>/{BotCommands.WatchCommand} https://youtu.be/xg6USkibZ5w 720 |My video</code>\n\n"
-        msg += "Tệp này sẽ được tải xuống ở chất lượng 720p và tên của nó sẽ là <b>My video</b>"
+        msg += f"\n\nVD :-\n<code>/{BotCommands.WatchCommand} https://youtu.be/UnyLfqpyi94 720 |My video</code>\n\n"
+        msg += "Tệp này sẽ được tải xuống ở chất lượng 720p và tên của nó sẽ là <b>My video </b>"
         sendMessage(msg, bot, update)
         return
     try:
@@ -29,7 +29,7 @@ def _watch(bot: Bot, update, isTar=False):
         mssg = mssg.split("|")
         qual = mssg[0].split(" ")[2]
         if qual == "":
-            raise IndexError
+          raise IndexError
       else:
         qual = message_args[2]
       if qual != "audio":
@@ -39,7 +39,7 @@ def _watch(bot: Bot, update, isTar=False):
     try:
       name = name_args[1]
     except IndexError:
-	  name = ""
+      name = ""
     reply_to = update.message.reply_to_message
     if reply_to is not None:
         tag = reply_to.from_user.username
@@ -64,10 +64,8 @@ def watch(update, context):
 
 
 mirror_handler = CommandHandler(BotCommands.WatchCommand, watch,
-                                pass_args=True,
                                 filters=CustomFilters.authorized_chat | CustomFilters.authorized_user)
 tar_mirror_handler = CommandHandler(BotCommands.TarWatchCommand, watchTar,
-                                    pass_args=True,
                                     filters=CustomFilters.authorized_chat | CustomFilters.authorized_user)
 dispatcher.add_handler(mirror_handler)
 dispatcher.add_handler(tar_mirror_handler)
