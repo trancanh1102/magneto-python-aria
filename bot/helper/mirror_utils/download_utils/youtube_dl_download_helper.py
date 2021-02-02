@@ -74,10 +74,10 @@ class YoutubeDLHelper(DownloadHelper):
         elif d['status'] == "downloading":
             with self.__resource_lock:
                 self.__download_speed = d['speed']
-		try:
-	            tbyte = d['total_bytes']
-		except KeyError:
-		    tbyte = d['total_bytes_estimate']
+                try:
+                    tbyte = d['total_bytes']
+                except KeyError:
+                    tbyte = d['total_bytes_estimate']
                 if self.is_playlist:
                     progress = d['downloaded_bytes'] / tbyte
                     chunk_size = d['downloaded_bytes'] - self.last_downloaded
@@ -109,7 +109,7 @@ class YoutubeDLHelper(DownloadHelper):
             try:
                 result = ydl.extract_info(link, download=False)
                 if name == "":
-	                name = ydl.prepare_filename(result)
+                    name = ydl.prepare_filename(result)
                 else:
                     name = name
                 # noobway hack for changing extension after converting to mp3
@@ -156,8 +156,8 @@ class YoutubeDLHelper(DownloadHelper):
         LOGGER.info(f"Downloading with YT-DL: {link}")
         self.__gid = f"{self.vid_id}{self.__listener.uid}"
         if qual == "audio":
-          self.opts['format'] = 'bestaudio'
-          self.opts['postprocessors'] = [{'key': 'FFmpegExtractAudio','preferredcodec': 'flac','preferredquality': 'best',}]
+          self.opts['format'] = 'bestaudio/best'
+          self.opts['postprocessors'] = [{'key': 'FFmpegExtractAudio','preferredcodec': 'mp3','preferredquality': '192',}]
         else:
           self.opts['format'] = qual
         if not self.is_playlist:
