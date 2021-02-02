@@ -5,8 +5,20 @@
 - This (or any custom) repo is not supported in official bot support group.
 - So if you have any issue then check first that issue is in official repo or not, You are only allowed to report that issue in bot support group if that issue is also present in official repo.
 
+## Features Coming soon....
+- ~Custom Filename~ Added 
+```
+Only for url, telegram files and ytdl.
+Not for mega links and magnet/torrents
+```
+- Rename Drive files
+
+Let's have some chit chat here - [@Magneto_chit_chat](https://t.me/magneto_chit_chat)
+Note :- it is not a Bot Support group. It's only for discussing rubbish things bcoz i want your help to learn coding 😜🤪.
+
+
 ## Credits :-
-- First of all, full credit goes to [Shivam Jha aka lzzy12](https://github.com/lzzy12) He build up this bot from scratch.
+- First of all, full credit goes to [Shivam Jha aka lzzy12](https://github.com/lzzy12) and [JaskaranSM aka Zero Cool](https://github.com/jaskaranSM) They build up this bot from scratch.
 - Then a huge thanks to [Sreeraj V R](https://github.com/SVR666) You can checkout his [repo here](https://github.com/SVR666/LoaderX-Bot)
 - Features added from [Sreeraj V R's](https://github.com/SVR666) repo -
 ```
@@ -22,6 +34,7 @@
 3. Fix SSL handsake error
 ```
 
+
 # What is this repo about?
 This is a telegram bot writen in python for mirroring files on the internet to our beloved Google Drive.
 
@@ -33,6 +46,7 @@ This project is heavily inspired from @out386 's telegram bot which is written i
 - Mirroring Mega.nz links to google drive (In development stage)
 - Mirror Telegram files to google drive
 - Mirror all youtube-dl supported links
+- Custom filename support in direct link, telegram files, YT-DL links
 - Extract these filetypes and uploads to google drive
 > ZIP, RAR, TAR, 7z, ISO, WIM, CAB, GZIP, BZIP2, 
 > APM, ARJ, CHM, CPIO, CramFS, DEB, DMG, FAT, 
@@ -47,6 +61,10 @@ This project is heavily inspired from @out386 's telegram bot which is written i
 - Uploading To Team Drives.
 - Index Link support
 - Shortener support
+- Extract password protected files (It's not hack, you have to enter password for extracting. LOL)
+
+- For extracting password protected files and using custom filename see these examples :-
+> https://telegra.ph/Magneto-Python-Aria---Custom-Filename-Examples-01-20
 
 ## Bot commands to be set in botfather
 
@@ -73,7 +91,7 @@ Deploying is pretty much straight forward and is divided into several steps as f
 
 - Clone this repo:
 ```
-git clone https://github.com/trancanh1102/magneto-python-aria mirror-bot/
+git clone https://github.com/magneto261290/magneto-python-aria mirror-bot/
 cd mirror-bot
 ```
 
