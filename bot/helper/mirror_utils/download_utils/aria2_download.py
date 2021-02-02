@@ -22,15 +22,12 @@ class AriaDownloadHelper(DownloadHelper):
         download = api.get_download(gid)
         self.name = download.name
         sname = download.name
-
-        
         if STOP_DUPLICATE_MIRROR:
           if dl.getListener().isTar == True:
             sname = sname + ".tar"
-            
           if dl.getListener().extract == True:
-	        smsg = None
-	      else:
+            smsg = None
+          else:
             gdrive = GoogleDriveHelper(None)
             smsg, button = gdrive.drive_list(sname)
           if smsg:
@@ -39,7 +36,6 @@ class AriaDownloadHelper(DownloadHelper):
               aria2.remove([download])
           return
         update_all_messages()
-
     def __onDownloadComplete(self, api: API, gid):
         LOGGER.info(f"onDownloadComplete: {gid}")
         dl = getDownloadByGid(gid)
@@ -86,7 +82,7 @@ class AriaDownloadHelper(DownloadHelper):
                                       on_download_complete=self.__onDownloadComplete)
 
 
-    def add_download(self, link: str, path,listener, filename):
+    def add_download(self, link: str, path, listener, filename):
         if is_magnet(link):
             download = aria2.add_magnet(link, {'dir': path, 'out': filename})
         else:
@@ -97,5 +93,4 @@ class AriaDownloadHelper(DownloadHelper):
         with download_dict_lock:
             download_dict[listener.uid] = AriaDownloadStatus(download.gid,listener)
             LOGGER.info(f"Started: {download.gid} DIR:{download.dir} ")
-
 
