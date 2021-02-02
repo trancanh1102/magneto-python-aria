@@ -34,7 +34,7 @@ class AriaDownloadHelper(DownloadHelper):
             gdrive = GoogleDriveHelper(None)
             smsg, button = gdrive.drive_list(sname)
           if smsg:
-              dl.getListener().onDownloadError(f'😡😡Tệp đã có sẵn trong drive. Bạn nên tìm kiếm trước khi tải bất kỳ tệp nào. Tải xuống này đã bị dừng.\n\n')
+              dl.getListener().onDownloadError(f'😒😆Tệp đã có sẵn trong drive. Bạn nên tìm kiếm trước khi tải bất kỳ tệp nào. Tải xuống này đã bị dừng.\n\n')
               sendMarkup(" Đây là kết quả tìm kiếm:👇👇", dl.getListener().bot, dl.getListener().update, button)
               aria2.remove([download])
           return
