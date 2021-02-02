@@ -37,7 +37,7 @@ class MirrorListener(listeners.MirrorListeners):
         self.tag = tag
         self.extract = extract
         self.pswd = pswd
-        
+
     def onDownloadStarted(self):
         pass
 
@@ -129,7 +129,7 @@ class MirrorListener(listeners.MirrorListeners):
             uname = f"@{self.message.from_user.username}"
         else:
             uname = f'<a href="tg://user?id={self.message.from_user.id}">{self.message.from_user.first_name}</a>'
-        msg = f"{uname} quá trình tải xuống của bạn đã bị dừng do: {error}"
+        msg = f"{uname} your download has been stopped due to: {error}"
         sendMessage(msg, self.bot, self.update)
         if count == 0:
             self.clean()
@@ -206,14 +206,14 @@ def _mirror(bot, update, isTar=False, extract=False):
     name_args = update.message.text.split('|')
     try:
         link = message_args[1]
-	if link.startswith("|") or link.startswith("pswd: "):
+        if link.startswith("|") or link.startswith("pswd: "):
             link = ''
     except IndexError:
         link = ''
     try:
         name = name_args[1]
-	name = name.strip()
-	if name.startswith("pswd: "):
+        name = name.strip()
+        if name.startswith("pswd: "):
             name = ''
     except IndexError:
         name = ''
@@ -236,7 +236,7 @@ def _mirror(bot, update, isTar=False, extract=False):
         if not bot_utils.is_url(link) and not bot_utils.is_magnet(link) or len(link) == 0:
             if file is not None:
                 if file.mime_type != "application/x-bittorrent":
-	                listener = MirrorListener(bot, update, pswd, isTar, tag, extract)
+                    listener = MirrorListener(bot, update, pswd, isTar, tag, extract)
                     tg_downloader = TelegramDownloadHelper(listener)
                     tg_downloader.add_download(reply_to, f'{DOWNLOAD_DIR}{listener.uid}/', name)
                     sendStatusMessage(update, bot)
@@ -248,7 +248,7 @@ def _mirror(bot, update, isTar=False, extract=False):
     else:
         tag = None
     if not bot_utils.is_url(link) and not bot_utils.is_magnet(link):
-        sendMessage('Không có nguồn tải xuống được cung cấp', bot, update)
+        sendMessage('No download source provided', bot, update)
         return
 
     try:
@@ -261,7 +261,7 @@ def _mirror(bot, update, isTar=False, extract=False):
             sendMessage("Mega links are blocked bcoz mega downloading is too much unstable and buggy. mega support will be added back after fix", bot, update)
         else:
             mega_dl = MegaDownloadHelper()
-	    mega_dl.add_download(link, f'{DOWNLOAD_DIR}/{listener.uid}/', listener)
+            mega_dl.add_download(link, f'{DOWNLOAD_DIR}/{listener.uid}/', listener)
             sendStatusMessage(update, bot)
     else:
         ariaDlManager.add_download(link, f'{DOWNLOAD_DIR}/{listener.uid}/', listener, name)
